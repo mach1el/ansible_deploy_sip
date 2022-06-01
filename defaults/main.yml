@@ -1,0 +1,73 @@
+---
+
+templates_dir: "../templates"
+
+sources_list_path: "/etc/apt"
+sources_list_dir: "/etc/apt/sources.list.d"
+sources_list_file:
+  - sources.list
+
+zsh_path: "/root"
+zsh_file:
+  - zshrc
+
+pgpass_path: "/root"
+pgass_file:
+  - pgpass
+
+prometheus_config_dir: "/etc/prometheus"
+prometheus_config_file: 
+  - prometheus.yml
+
+opensips_cp_version: "8.3.2"
+opensips_cp_dir: "/var/www/html/opensips-cp"
+opensips_cp_repo: "https://github.com/OpenSIPS/opensips-cp.git"
+
+opensips_cli_source_list_file:
+  - opensips-cli.list
+opensips_cli_packages:
+  - opensips-cli
+
+kube_source_list_file:
+  - kubernetes.list
+kube_packages:
+  - kubelet
+  - kubeadm
+  - kubectl
+  - kubernetes-cni
+
+apache_packages:
+  - apache2
+  - libapache2-mod-php 
+  - php-curl
+  - php
+  - php-mysql
+  - php-gd
+  - php-pear
+  - php-cli
+  - php-apcu
+  - php-pgsql
+
+needed_packages:
+  - gnupg2
+  - git
+  - curl
+  - wget
+  - zsh
+  - sudo
+  - vim
+  - htop
+  - sngrep
+  - tcpdump
+  - build-essential
+  - python3-pexpect
+  - prometheus
+  - prometheus-node-exporter
+  - docker
+  - docker.io
+  - docker-compose 
+  - net-tools
+  - mlocate
+  - postgresql-client
+  - nodejs
+  - apache2
