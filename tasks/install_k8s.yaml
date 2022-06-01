@@ -1,0 +1,15 @@
+- name: ADD KUBE KEY.
+  shell: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+- name: ADD KUBE REPO.
+  template:
+    src: "{{ templates_dir }}/{{ item }}.j2"
+    dest: "{{ sources_list_dir }}/{{ item }}"
+    backup: true
+  with_items: "{{ kube_source_list_file }}"
+
+- name: Update and install
+  apt:
+    update_cache: yes
+    name: "{{ kube_packages }}"
+    state: present

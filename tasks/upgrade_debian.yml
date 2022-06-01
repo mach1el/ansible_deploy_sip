@@ -1,0 +1,11 @@
+- name: Copy sources list
+  template:
+    src: "{{ templates_dir }}/{{ item }}.j2"
+    dest: "{{ sources_list_path }}/{{ item }}"
+    backup: true
+  with_items: "{{ sources_list_file }}"
+
+- name: APT UPDATE && APT UPGRADE.
+  apt:
+    update_cache: yes
+    upgrade: 'yes'

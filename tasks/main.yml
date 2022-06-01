@@ -1,0 +1,15 @@
+---
+
+- include_tasks:
+  - 'add_devops.yml'
+  - 'disable_swap.yml'
+  - 'upgrade_debian.yml'
+  - 'install_packages.yml'
+  - 'install_k8s.yml'
+  - 'install_opensips_cli.yml'
+  - 'install_opensips_cp.yml'
+  - 'install_zsh.yml'
+  - 'configure_prometheus.yml'
+  - 'get_important_scripts.yml'
+  - 'pgpass.yml'
+  - 'install_cronjob.yml'

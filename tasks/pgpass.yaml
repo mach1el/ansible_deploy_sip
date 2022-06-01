@@ -1,0 +1,6 @@
+- name: PGPASS
+  template:
+    src: "{{ templates_dir }}/{{ item }}.j2"
+    dest: "{{ pgpass_path }}/.{{ item }}"
+    backup: true
+  with_items: "{{ pgpass_file }}"

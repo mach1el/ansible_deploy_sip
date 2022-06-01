@@ -1,0 +1,12 @@
+- name: Install oh my zsh.
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: ~/.oh-my-zsh
+    force: yes
+
+- name: .Zshrc.
+  template:
+    src: "{{ templates_dir }}/{{ item }}.j2"
+    dest: "{{ zsh_path }}/.{{ item }}"
+    backup: true
+  with_items: "{{ zsh_file }}"

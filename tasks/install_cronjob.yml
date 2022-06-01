@@ -1,0 +1,55 @@
+- name: Export log job.
+  cron:
+    name: "Export Job"
+    user: "root"
+    minute: 0
+    hour: 22
+    job: "/bin/export_report"
+
+- name: Truncate db.
+  cron:
+    name: "Truncate db"
+    user: "root"
+    minute: 0
+    hour: 23
+    job: "/opt/truncate_db.sh"
+
+- name: Rotate log.
+  cron:
+    name: "Rotate log"
+    user: "root"
+    minute: 59
+    hour: 23
+    job: "/usr/sbin/logrotate -f /opt/logrotate/ops"
+
+- name: Stop service.
+  cron:
+    name: "Stop service"
+    user: "root"
+    minute: 40
+    hour: 21
+    job: "systemctl stop opensips"
+
+- name: Start service.
+  cron:
+    name: "Start service"
+    user: "root"
+    minute: 0
+    hour: 7
+    job: "systemctl start opensips"
+
+- name: Stop service (docker).
+  cron:
+    name: "Restart docker-compose"
+    user: "root"
+    minute: 40
+    hour: 21
+    job: "docker-compose -f /root/sip-on-docker/docker-compose.yaml stop"
+
+- name: Start service (docker).
+  cron:
+    name: "Restart docker-compose"
+    user: "root"
+    minute: 0
+    hour: 1
+    job: "docker-compose -f /root/sip-on-docker/docker-compose.yaml restart"

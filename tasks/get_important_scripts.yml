@@ -1,0 +1,36 @@
+---
+
+- name: Create log foler.
+  file:
+    path: '/var/log/opensips_cdr'
+    state: directory
+
+- name: Create logrotate folder.
+  file:
+    path: '/opt/logrotate/'
+    state: directory
+
+- name: Create logrotate folder.
+  file:
+    path: '/opt/opensips/'
+    state: directory
+
+- name: Create sip-on-docker folder.
+  file:
+    path: '/root/sip-on-docker'
+    state: directory
+
+- name: Script logrotate opensips log.
+  shell: 'wget https://gist.githubusercontent.com/devops-itcs/d7eba3e8850bd7ffdf4f2a669b8f369a/raw/aaf88b1d44bb3d443efb859fbf4d5e5cfbf1d8c7/ops -O /opt/logrotate/ops'
+
+- name: Script to export log.
+  shell: 'wget https://gist.githubusercontent.com/devops-itcs/062c029f545d50675764612e9f99a118/raw/037f17c6655018d3957df523bed63a4215c6d832/export_report.sh -O /bin/export_report && chmod +x /bin/export_report'
+
+- name: Script to truncate db.
+  shell: 'wget https://gist.githubusercontent.com/devops-itcs/7a5a8c90ab1d7b567f9c9320eacfa1ab/raw/97ac444a16f37ddb568ea078d6207fcbf7179fbd/truncate_db.sh -O /opt/truncate_db.sh && chmod +x /opt/truncate_db.sh'
+
+- name: Opensips configuration file.
+  shell: 'wget https://gist.githubusercontent.com/devops-itcs/de0089780613b19338dd3c27fe394001/raw/13666aac46481140988b94d99bb9d7542a7af188/opensips.cfg -O /opt/opensips/opensips.cfg'
+
+- name: Get docker-compose file.
+  shell: 'wget https://gist.githubusercontent.com/devops-itcs/a25096613fcc6f51c55887a2e47e1cc2/raw/27e27d609c0383d55bce9d7a9a200cc24a85bc43/docker-compose.yaml -O /root/sip-on-docker/docker-compose.yaml'

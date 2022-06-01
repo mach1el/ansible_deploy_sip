@@ -1,0 +1,4 @@
+---
+
+- name: Add devops to hosts.
+ shell: echo '10.10.94.129 master devops' >> /etc/hosts
