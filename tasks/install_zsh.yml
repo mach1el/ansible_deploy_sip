@@ -10,3 +10,6 @@
     dest: "{{ zsh_path }}/.{{ item }}"
     backup: true
   with_items: "{{ zsh_file }}"
+
+- name: Make zsh default.
+  shell: "chsh -s /bin/zsh"
