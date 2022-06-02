@@ -5,7 +5,7 @@
     minute: 0
     hour: 22
     job: "/bin/export_report"
-    state: absent
+    state: present
 
 - name: Truncate db.
   cron:
@@ -14,7 +14,7 @@
     minute: 0
     hour: 23
     job: "/opt/truncate_db.sh"
-    state: absent
+    state: present
 
 - name: Rotate log.
   cron:
@@ -23,7 +23,7 @@
     minute: 59
     hour: 23
     job: "/usr/sbin/logrotate -f /opt/logrotate/ops"
-    state: absent
+    state: present
 
 - name: Stop opensips service.
   cron:
@@ -32,7 +32,7 @@
     minute: 40
     hour: 21
     job: "systemctl stop opensips"
-    state: absent
+    state: present
 
 - name: Start opensips service.
   cron:
@@ -41,7 +41,7 @@
     minute: 0
     hour: 7
     job: "systemctl start opensips"
-    state: absent
+    state: present
 
 - name: Stop sip-on-docker).
   cron:
@@ -50,7 +50,7 @@
     minute: 40
     hour: 21
     job: "docker-compose -f /root/sip-on-docker/docker-compose.yaml stop"
-    state: absent
+    state: present
 
 - name: Start sip-on-docker.
   cron:
@@ -59,4 +59,4 @@
     minute: 0
     hour: 1
     job: "docker-compose -f /root/sip-on-docker/docker-compose.yaml restart"
-    state: absent
+    state: present
