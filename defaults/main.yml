@@ -12,7 +12,7 @@ zsh_file:
   - zshrc
 
 pgpass_path: "/root"
-pgass_file:
+pgpass_file:
   - pgpass
 
 prometheus_config_dir: "/etc/prometheus"
