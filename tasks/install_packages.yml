@@ -1,6 +1,6 @@
-- name: Install some packages.
+- name: Install needed packages.
   apt:
-    name: "{{ some_packages }}"
+    name: "{{ needed_packages }}"
     state: present
 
 - name: Install apache2 packages.
