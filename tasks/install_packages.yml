@@ -1,10 +1,10 @@
-- name: Install needed packages.
+- name: Install some packages.
   apt:
-    name: "{{ needed_packages }}"
+    name: "{{ some_packages }}"
     state: present
 
 - name: Install apache2 packages.
   apt:
-    name: "{{ some_packages }}"
+    name: "{{ apache_packages }}"
     state: present
   notify: Disable apache2
