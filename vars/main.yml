@@ -71,4 +71,5 @@ needed_packages:
   - postgresql-client
   - nodejs
   - apache2
+  - python
   - python3
