@@ -1,0 +1,19 @@
+/var/log/opensips.log {
+    daily
+    dateext
+    rotate 60
+    compress
+    compresscmd /usr/bin/xz
+    create 0644 root root
+}
+
+/var/lib/docker/containers/*/*.log {
+    daily
+    dateext
+    rotate 60
+    compress
+    compresscmd /usr/bin/xz
+    create 0644 root root
+    postrotate
+    mv /var/lib/docker/containers/*/*.xz /var/log/;
+}

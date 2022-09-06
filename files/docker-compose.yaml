@@ -1,0 +1,64 @@
+version: "3.6"
+
+services:
+
+  postgres:
+    container_name: postgres
+    hostname: postgres
+    image: mich43l/postgresql:opensips-3.2
+    volumes:
+      - postgres-ops:/var/lib/postgresql/data/:rw
+    environment:
+      - POSTGRES_DB=opensips
+      - POSTGRES_USER=opensips
+      - POSTGRES_PASSWORD=opensipsrw
+    network_mode: "host"
+    restart: unless-stopped
+
+  rtpproxy:
+    container_name: rtpproxy
+    hostname: rtpproxy
+    image: mich43l/rtpproxy:latest
+    network_mode: "host"
+    restart: unless-stopped
+
+  opensips:
+    container_name: opensips
+    hostname: opensips
+    image: mich43l/opensips:latest
+    volumes:
+      - /opt/opensips/:/etc/opensips
+      - /tmp/:/tmp/
+    network_mode: "host"
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - rtpproxy
+
+  opensips-cp:
+    container_name: opensips-cp
+    hostname: opensips-cp
+    image: mich43l/opensips-cp:3.2
+    volumes:
+      - apache2-ops-cp:/etc/apache2/
+      - opensips-cp:/var/www/html/opensips-cp/:rw
+    network_mode: "host"
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - rtpproxy
+      - opensips
+
+  hep-cli:
+    container_name: hep-cli
+    hostname: hep-cli
+    image: mich43l/hep-cli
+    environment:
+      - HEP_SERVER=localhost
+    network_mode: "host"
+    restart: unless-stopped
+
+volumes:
+  postgres-ops:
+  apache2-ops-cp:
+  opensips-cp:
