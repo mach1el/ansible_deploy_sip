@@ -2,8 +2,8 @@
   cron:
     name: "Export Job"
     user: "root"
-    minute: 0
-    hour: 22
+    minute: 30
+    hour: 21
     job: "/bin/export_report"
     state: present
 
@@ -11,8 +11,8 @@
   cron:
     name: "Truncate db"
     user: "root"
-    minute: 0
-    hour: 23
+    minute: 35
+    hour: 21
     job: "/bin/truncate_db"
     state: present
 
@@ -43,11 +43,11 @@
     job: "systemctl start opensips"
     state: present
 
-- name: Stop sip-on-docker).
+- name: Stop sip-on-docker.
   cron:
     name: "Stop sip-on-docker"
     user: "root"
-    minute: 40
+    minute: 45
     hour: 21
     job: "docker-compose -f /root/sip-on-docker/docker-compose.yaml stop"
     state: present
