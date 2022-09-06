@@ -21,16 +21,28 @@
     state: directory
 
 - name: Script logrotate opensips log.
-  shell: 'wget https://gist.githubusercontent.com/devops-itcs/d7eba3e8850bd7ffdf4f2a669b8f369a/raw/aaf88b1d44bb3d443efb859fbf4d5e5cfbf1d8c7/ops -O /opt/logrotate/ops'
+  copy:
+    src: "ops"
+    dest: "/opt/logrotate/ops"
 
 - name: Script to export log.
-  shell: 'wget https://gist.githubusercontent.com/devops-itcs/7a5a8c90ab1d7b567f9c9320eacfa1ab/raw/e69f22eaeddc26f75fcff2a4f0645e147bf3fe17/truncate_db.sh -O /bin/export_report && chmod +x /bin/export_report'
+  copy:
+    src: "export_report.sh"
+    dest: "/bin/export_report"
+    mode: a+x
 
 - name: Script to truncate db.
-  shell: 'wget https://gist.githubusercontent.com/devops-itcs/7a5a8c90ab1d7b567f9c9320eacfa1ab/raw/e69f22eaeddc26f75fcff2a4f0645e147bf3fe17/truncate_db.sh -O /opt/truncate_db.sh && chmod +x /opt/truncate_db.sh'
+  copy:
+    src: "truncate_db.sh"
+    dest: "/bin/truncate_db"
+    mode: a+x
 
 - name: Opensips configuration file.
-  shell: 'wget https://gist.githubusercontent.com/devops-itcs/de0089780613b19338dd3c27fe394001/raw/c5aaf4dcb70e7e0d6bf92a1680c0977928621b48/opensips.cfg -O /opt/opensips/opensips.cfg'
+  copy:
+    src: "opensips.cfg"
+    dest: "/opt/opensips/opensips.cfg"
 
 - name: Get docker-compose file.
-  shell: 'wget https://gist.githubusercontent.com/devops-itcs/a25096613fcc6f51c55887a2e47e1cc2/raw/27e27d609c0383d55bce9d7a9a200cc24a85bc43/docker-compose.yaml -O /root/sip-on-docker/docker-compose.yaml'
+  copy:
+    src: "docker-compose.yaml"
+    dest: "/root/sip-on-docker/docker-compose.yaml"

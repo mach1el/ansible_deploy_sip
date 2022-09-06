@@ -1,5 +1,7 @@
 ---
 
+debian_version: "bullseye"
+
 templates_dir: "../templates"
 
 sources_list_path: "/etc/apt"
@@ -16,8 +18,6 @@ pgpass_file:
   - pgpass
 
 prometheus_config_dir: "/etc/prometheus"
-prometheus_config_file: 
-  - prometheus.yml
 
 opensips_cp_version: "8.3.2"
 opensips_cp_dir: "/var/www/html/opensips-cp"

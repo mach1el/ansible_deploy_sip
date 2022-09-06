@@ -3,7 +3,7 @@
 
 - name: ADD KUBE REPO.
   template:
-    src: "{{ templates_dir }}/{{ item }}.j2"
+    src: "{{ item }}.j2"
     dest: "{{ sources_list_dir }}/{{ item }}"
     backup: true
   with_items: "{{ kube_source_list_file }}"

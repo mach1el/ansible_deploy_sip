@@ -13,7 +13,7 @@
     user: "root"
     minute: 0
     hour: 23
-    job: "/opt/truncate_db.sh"
+    job: "/bin/truncate_db"
     state: present
 
 - name: Rotate log.

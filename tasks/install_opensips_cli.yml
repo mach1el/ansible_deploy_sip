@@ -3,7 +3,7 @@
 
 - name: Add opensips-cli reposity
   template:
-    src: "{{ templates_dir }}/{{ item }}.j2"
+    src: "{{ item }}.j2"
     dest: "{{ sources_list_dir }}/{{ item }}"
     backup: true
   with_items: "{{ opensips_cli_source_list_file }}"

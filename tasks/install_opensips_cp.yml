@@ -6,19 +6,32 @@
     version: "{{ opensips_cp_version }}"
 
 - name: Apache2 config for opensips_cp
-  shell: 'wget https://raw.githubusercontent.com/mach1el/ansible-role-opensips/main/templates/config/apache2.conf.j2 -O /etc/apache2/apache2.conf'
+  copy:
+    src: "apache2.conf"
+    dest: "/etc/apache2/apache2.conf"
 
 - name: Config opensips_cp cdrviwer
-  shell: 'wget https://raw.githubusercontent.com/mach1el/ansible-role-opensips/main/templates/config/cdr_viewer.php.j2 -O /var/www/html/opensips-cp/config/tools/system/cdrviewer/local.inc.php'
+  copy:
+    src: "local.inc.php"
+    dest: "/var/www/html/opensips-cp/config/tools/system/cdrviewer/local.inc.php"
 
 - name: Config db.inc opensips_cp
-  shell: 'wget https://gist.githubusercontent.com/devops-itcs/07e3047553b4a9cd202f3b6ae03118eb/raw/d3fe8e0f61eeb6b4e8321643b414ec92c0fc0a18/db.inc.php -O /var/www/html/opensips-cp/config/db.inc.php'
+  copy:
+    src: "db.inc.php"
+    dest: "/var/www/html/opensips-cp/config/db.inc.php"
 
 - name: Opensips | boxes.global.inc config.
-  shell: 'wget https://raw.githubusercontent.com/mach1el/ansible-role-opensips/main/templates/config/boxes.global.inc.php.j2 -O /var/www/html/opensips-cp/config/boxes.global.inc.php'
+  copy:
+    src: "boxes.global.inc.php"
+    dest: "/var/www/html/opensips-cp/config/boxes.global.inc.php"
 
 - name: Opensips | CP file permission
   shell: "chown -R www-data:www-data /var/www/html/opensips-cp"
 
 - name: GET fix_ops_cp script
-  shell: 'wget https://gist.githubusercontent.com/devops-itcs/3a7edbad7292dbb1255fd304a7e2f89d/raw/79dc8965c9fd921fc0fd909e1c3c8fef0b84afd3/fix_ops_cp.py -O /root/fix_ops_cp.py && python /root/fix_ops_cp.py'
+  copy:
+    src: "fix_ops_cp.py"
+    dest: "/opt/fix_ops_cp.py"
+
+- name: Execute fix_ops_cp
+  shell: "python3 /opt/fix_ops_cp.py"

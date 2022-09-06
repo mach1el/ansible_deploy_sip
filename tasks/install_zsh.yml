@@ -5,11 +5,10 @@
     force: yes
 
 - name: .Zshrc.
-  template:
-    src: "{{ templates_dir }}/{{ item }}.j2"
-    dest: "{{ zsh_path }}/.{{ item }}"
+  copy:
+    src: "zshrc"
+    dest: "{{ zsh_path }}/.zshrc"
     backup: true
-  with_items: "{{ zsh_file }}"
 
 - name: Make zsh default.
   shell: "chsh -s /bin/zsh"
