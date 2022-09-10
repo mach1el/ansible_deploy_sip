@@ -5,6 +5,12 @@
     name: apache2
     state: stopped
     enabled: false
+    
+- name: Disable kubelet
+  service: 
+    name: kubelet
+    state: stopped
+    enabled: false
 
 - name: Restart prometheus
   service:
