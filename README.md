@@ -1,7 +1,5 @@
-# ansible_sip_deploy
-![License](https://img.shields.io/github/license/mach1el/ansible_sip_deploy?color=purple&style=plastic)
-
-Auto deploy SIP proxy and dependencies
+# SIP proxy provisioning
+Auto deploy SIP proxy and dependencies ![License](https://img.shields.io/github/license/mach1el/ansible_deploy_sip?color=purple&style=plastic)
 
 ## Role tree
 
