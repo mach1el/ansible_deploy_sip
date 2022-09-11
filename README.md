@@ -1,5 +1,5 @@
 # ansible_sip_deploy
-![Version](https://img.shields.io/github/v/release/mach1el/ansible_sip_deploy?color=brown&style=plastic) ![License](https://img.shields.io/github/license/mach1el/ansible_sip_deploy?color=purple&style=plastic)
+![License](https://img.shields.io/github/license/mach1el/ansible_sip_deploy?color=purple&style=plastic)
 
 Auto deploy SIP proxy and dependencies
 
