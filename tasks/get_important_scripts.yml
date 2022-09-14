@@ -24,25 +24,30 @@
   copy:
     src: "ops"
     dest: "/opt/logrotate/ops"
+    backup: yes
 
 - name: Script to export log.
   copy:
     src: "export_report.sh"
     dest: "/bin/export_report"
     mode: a+x
+    backup: yes
 
 - name: Script to truncate db.
   copy:
     src: "truncate_db.sh"
     dest: "/bin/truncate_db"
     mode: a+x
+    backup: yes
 
 - name: Opensips configuration file.
   copy:
     src: "opensips.cfg"
     dest: "/opt/opensips/opensips.cfg"
+    backup: yes
 
 - name: Get docker-compose file.
   copy:
     src: "docker-compose.yaml"
     dest: "/root/sip-on-docker/docker-compose.yaml"
+    backup: yes
