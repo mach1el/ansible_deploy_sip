@@ -1,3 +1,6 @@
+- name  : Remove old cronjob
+  shell : crontab -r
+
 - name: Export log job.
   cron:
     name: "Export Job"
@@ -23,24 +26,6 @@
     minute: 59
     hour: 23
     job: "/usr/sbin/logrotate -f /opt/logrotate/ops"
-    state: present
-
-- name: Stop opensips service.
-  cron:
-    name: "Stop opensips service"
-    user: "root"
-    minute: 40
-    hour: 21
-    job: "systemctl stop opensips"
-    state: present
-
-- name: Start opensips service.
-  cron:
-    name: "Start opensips service"
-    user: "root"
-    minute: 0
-    hour: 7
-    job: "systemctl start opensips"
     state: present
 
 - name: Stop sip-on-docker.
