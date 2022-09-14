@@ -26,6 +26,9 @@ services:
     container_name: opensips
     hostname: opensips
     image: mich43l/opensips:latest
+    environment:
+      - OPENSIPS_S_MEMORY=2048
+      - OPENSIPS_P_MEMORY=2048
     volumes:
       - /opt/opensips/:/etc/opensips
       - /tmp/:/tmp/
