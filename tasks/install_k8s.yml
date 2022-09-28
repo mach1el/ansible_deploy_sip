@@ -10,6 +10,7 @@
 
 - name: Remove current kubectl,kubeadm,kubelet 
   shell: apt purge kubeadm kubectl kubelet kubernetes-cni kube*
+  ignore_errors: yes
 
 - name: Update and install
   apt:
