@@ -1,5 +1,6 @@
 - name  : Remove old cronjob
-  shell : crontab -r
+  command : crontab -r
+  ignore_errors: yes
 
 - name: Export log job.
   cron:
